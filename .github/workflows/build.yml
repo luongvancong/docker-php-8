@@ -22,7 +22,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./cleanup.sh
           docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD} docker.pkg.github.com
           docker build -t justinluong/php8.0 .
           docker push justinluong/php8.0
