@@ -1,4 +1,5 @@
 FROM php:8.0-apache
+RUN apt update
 RUN apt-get install -y libmcrypt-dev zip unzip libzip-dev libssl-dev
 RUN apt-get install -y \
                 libfreetype6-dev \
