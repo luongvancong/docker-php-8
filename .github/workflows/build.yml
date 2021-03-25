@@ -20,7 +20,8 @@ jobs:
       # Runs the Super-Linter action
       - name: Run build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
           docker build -t justinluong/php8.0 .
