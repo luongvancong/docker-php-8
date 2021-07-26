@@ -28,3 +28,4 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 RUN composer self-update --2
+RUN apt-get install -y git
