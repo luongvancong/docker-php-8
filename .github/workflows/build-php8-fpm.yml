@@ -24,5 +24,5 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-          docker build -t justinluong/php8.0-fpm .
+          docker build -t justinluong/php8.0-fpm -f Php8-Fpm.Dockerfile .
           docker push justinluong/php8.0-fpm
