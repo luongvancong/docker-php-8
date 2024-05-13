@@ -22,3 +22,4 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 RUN apt-get install -y git
+EXPOSE 9000
