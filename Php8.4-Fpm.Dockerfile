@@ -18,6 +18,13 @@ RUN apt-get update \
 
 COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
 
+# Code được bind-mount từ host nên owner của repo không phải user chạy trong container (root), và
+# git từ 2.35.2 từ chối đọc repo "lạ chủ":
+#   fatal: detected dubious ownership in repository at '/var/www/html'
+# Composer gọi git để đọc version info, nên mỗi lần `composer install` lại in cảnh báo đó.
+# Trong container, repo là thứ người vận hành tự mount vào, không có chủ nào khác để phân biệt.
+RUN git config --system --add safe.directory '*'
+
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 WORKDIR /var/www/html
